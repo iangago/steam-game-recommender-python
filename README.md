@@ -15,7 +15,26 @@ This project was built as a learning project to practice working with APIs, JSON
 * Retrieve all owned games and their playtime
 * Analyze the user's most played genres
 * Retrieve the Steam Weekly Top 100 games
-* Recommend games based on the user's preferred genres
+* Score and rank games based on user preferences:
+
+              Genre Score
+        favorite genre match   +5
+        second genre match     +3
+        third genre match      +2
+        other top 5 genre      +1
+
+             Popularity Score
+        rank 1-10    +3
+        rank 11-30   +2
+        rank 31-60   +1
+        rank 61-100  +0
+
+              Diversity Bonus
+        If a game matches multiple genres: +1 bonus
+
+                            **Final Score**
+        final_score = genre_score + popularity_score + diversity_bonus
+
 * Terminal-based interface
 * API data parsing using JSON
 
@@ -43,20 +62,35 @@ This project was built as a learning project to practice working with APIs, JSON
 
 ## Project Structure
 steam-game-recommender/
+
 │
+
 ├── images/
-│   └── preview.png
+
+│       └── preview.png
+
 │
+
 ├── main.py
+
 ├── steam_api.py
+
 ├── library.py
+
 ├── analyzer.py
+
 ├── recommender.py
+
 ├── utils.py
+
 ├── terminal.py
+
 │
+
 ├── requirements.txt
+
 ├── .gitignore
+
 └── README.md
 
 ### Module Responsibilities
@@ -146,6 +180,18 @@ Example output of the program running in the terminal.
 * Export recommendations to a file
 * Web interface using Flask
 * User interface improvements
+
+---
+
+## Versions
+
+v1.1
+- Scoring-based recommendation system
+- Improved ranking algorithm
+
+v1.0
+- Basic genre-based recommendations
+- Steam API integration
 
 ---
 
