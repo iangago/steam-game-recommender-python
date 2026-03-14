@@ -31,10 +31,21 @@ def print_terminal(api_key):
     print("\nTop Genres")
     i = 1
     for genre in user_top_genres:
-        print(f"{i}. {genre}");
+        print(f"{i}. {genre}")
         i += 1      
 
     #print recommended games
+    #     Game Rec Structure
+    #1. Hades II
+    #   Score: 8
+    #   Genres matched: Roguelike, Action
+    #   Steam Rank: #12
+
+    i = 1
     print("\nRecommended Games")
-    for games in user_recommended_games:
-        print(f"- {user_recommended_games[games]}")
+    for game in user_recommended_games:
+        print(f"{i}. {game['name']}")
+        print(f"     Score: {game['score']}")
+        print(f"     Genres Matched: {game['genres_matched']}")
+        print(f"     Steam Rank: #{game['steam_rank']}\n")
+        i += 1
