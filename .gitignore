@@ -2,6 +2,9 @@
 __pycache__/
 *.pyc
 
+# Program cache
+cache.json
+
 # API keys / configs
 config.py
 

@@ -37,6 +37,7 @@ This project was built as a learning project to practice working with APIs, JSON
 
 * Terminal-based interface
 * API data parsing using JSON
+* Local metadata caching (reduces API calls)
 
 ---
 
@@ -61,37 +62,27 @@ This project was built as a learning project to practice working with APIs, JSON
 ---
 
 ## Project Structure
-steam-game-recommender/
 
-│
-
-├── images/
-
-│       └── preview.png
-
-│
-
-├── main.py
-
-├── steam_api.py
-
-├── library.py
-
-├── analyzer.py
-
-├── recommender.py
-
-├── utils.py
-
-├── terminal.py
-
-│
-
-├── requirements.txt
-
-├── .gitignore
-
-└── README.md
+        steam-game-recommender/
+                images/
+                        preview.png
+                steam/
+                        steam_api.py
+                        library.py
+                core/
+                        analyzer.py
+                        recommender.py
+                storage/
+                        cache.py
+                        cache.json
+                ui/
+                        terminal.py
+                        
+                main.py
+                utils.py
+                requirements.txt
+                README.md
+                .gitignore
 
 ### Module Responsibilities
 
@@ -115,6 +106,9 @@ Program entry point and interface handler.
 
 **recommender.py**
 Matches the user's preferred genres with games from the Steam Weekly Top 100 list and generates recommendations.
+
+**cache.py**
+Deals with cache loading updating and saving
 
 ---
 
@@ -169,13 +163,12 @@ Example output of the program running in the terminal.
 * Structuring multi-file Python projects
 * Data analysis using dictionaries and lists
 * Building terminal-based applications
+* Cache implmentation
 
 ---
 
 ## Future Improvements
 
-* Caching Steam API responses to reduce API calls
-* More advanced recommendation scoring
 * Genre visualization charts
 * Export recommendations to a file
 * Web interface using Flask
@@ -184,6 +177,10 @@ Example output of the program running in the terminal.
 ---
 
 ## Versions
+
+v1.2
+- Added game cache storage
+- Improve project file structure
 
 v1.1
 - Scoring-based recommendation system
