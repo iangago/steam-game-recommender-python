@@ -1,13 +1,9 @@
-def top_genres(game_library):
-    genres_playtime = genre_playtime(game_library)
-
+def sorted_genres(genre_playtime):
     #sort trough the dictionary putting the highest playtime first
-    sorted_genres = sorted(genres_playtime.items(), key=lambda x: x[1], reverse=True)
-
-    top_5_genres = [sorted_genres[0], sorted_genres[1], sorted_genres[2], sorted_genres[3], sorted_genres[4]]
+    sorted_genres = sorted(genre_playtime.items(), key=lambda x: x[1], reverse=True)
 
     #return sorted list
-    return top_5_genres
+    return sorted_genres
     
 def genre_playtime(game_library):
     genre_list = {}
