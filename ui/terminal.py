@@ -4,6 +4,7 @@ import core.analyzer as analyzer
 import core.recommender as recommender
 import steam.steam_api as steam_api
 import storage.cache as cache
+import visualization
 
 def print_terminal(api_key):
     game_cache = cache.load_cache()
@@ -19,21 +20,31 @@ def print_terminal(api_key):
 
     user_library_games_ids = library.library_games_id(user_library)
 
-    user_top_genres = utils.filter_genre_list(analyzer.top_genres(user_library))
+    genre_playtime = analyzer.genre_playtime(user_library)
+
+    sorted_genres = analyzer.sorted_genres(genre_playtime)
+
+    top_5_genres = utils.top_five_genres(sorted_genres)
 
     weekly_top_100 = steam_api.get_top_100()
     print("\nSearching Game Recommendations...")
-    user_recommended_games = recommender.recommend_games(weekly_top_100, user_top_genres, user_library_games_ids, game_cache)
+    user_recommended_games = recommender.recommend_games(weekly_top_100, top_5_genres, user_library_games_ids, game_cache)
 
 
     #print user library basic information
     print(f"\nTotal Games: {len(user_library)}")
-    print(f"Total Playtime: {utils.get_total_hours(user_library):.1f} hours")
+    print(f"Total Playtime: {utils.get_total_hours(user_library):.1f} hours\n")
+
+    
 
     #print top 3 genres
+    print('Generating visualization...')
+    visualization.plot_top_genres(sorted_genres)
+    print('Chart saved to: charts/top_genres.png')
+
     print("\nTop Genres")
     i = 1
-    for genre in user_top_genres:
+    for genre in top_5_genres:
         print(f"{i}. {genre}")
         i += 1      
 
