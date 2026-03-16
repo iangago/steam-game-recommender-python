@@ -5,6 +5,9 @@ __pycache__/
 # Program cache
 cache.json
 
+# Image charts
+top_genres.png
+
 # API keys / configs
 config.py
 

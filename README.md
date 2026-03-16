@@ -3,7 +3,7 @@
 
 A terminal-based Steam game recommendation tool written in Python.
 
-The program analyzes a user's Steam library using the Steam Web API, identifies their most played genres, and recommends new games based on current popular titles on Steam.
+The program analyzes a user's Steam library using the Steam Web API, identifies their most played genres, creates a chart containing users genres and playtime and recommends new games based on current popular titles on Steam.
 
 This project was built as a learning project to practice working with APIs, JSON data, and Python data processing.
 
@@ -38,6 +38,7 @@ This project was built as a learning project to practice working with APIs, JSON
 * Terminal-based interface
 * API data parsing using JSON
 * Local metadata caching (reduces API calls)
+* Genre playtime visualization
 
 ---
 
@@ -47,6 +48,7 @@ This project was built as a learning project to practice working with APIs, JSON
 * Steam Web API
 * Requests
 * JSON
+* Matplotlib library
 
 ---
 
@@ -57,15 +59,19 @@ This project was built as a learning project to practice working with APIs, JSON
 3. Each game is analyzed to determine its genres.
 4. The program calculates the user's top genres based on playtime.
 5. The Steam Weekly Top 100 games are retrieved.
-6. The program recommends games that match the user's favorite genres.
+6. The program creates a chart of the users most played genres
+7. The program recommends games that match the user's favorite genres.
 
 ---
 
 ## Project Structure
 
         steam-game-recommender/
+                charts/
+                        top_genres.png
                 images/
                         preview.png
+                        top_genres_preview.png
                 steam/
                         steam_api.py
                         library.py
@@ -76,9 +82,9 @@ This project was built as a learning project to practice working with APIs, JSON
                         cache.py
                         cache.json
                 ui/
-                        terminal.py
-                        
+                        terminal.py              
                 main.py
+                visualization.py
                 utils.py
                 requirements.txt
                 README.md
@@ -110,6 +116,9 @@ Matches the user's preferred genres with games from the Steam Weekly Top 100 lis
 **cache.py**
 Deals with cache loading updating and saving
 
+**visualization.py**
+Creates a chart based on user data
+
 ---
 
 ## Preview
@@ -117,6 +126,14 @@ Deals with cache loading updating and saving
 Example output of the program running in the terminal.
 
 ![Program Preview](images/preview.png)
+
+---
+
+## Visualization Example
+
+Example of the chart created by the program.
+
+![Top Genres](images/top_genres_preview.png)
 
 ---
 
@@ -164,12 +181,12 @@ Example output of the program running in the terminal.
 * Data analysis using dictionaries and lists
 * Building terminal-based applications
 * Cache implmentation
+* Data visualization and filtering
 
 ---
 
 ## Future Improvements
 
-* Genre visualization charts
 * Export recommendations to a file
 * Web interface using Flask
 * User interface improvements
@@ -177,6 +194,9 @@ Example output of the program running in the terminal.
 ---
 
 ## Versions
+
+v1.3
+- Genre playtime visualization using a chart
 
 v1.2
 - Added game cache storage
